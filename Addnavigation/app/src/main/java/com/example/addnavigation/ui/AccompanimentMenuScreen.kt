@@ -23,6 +23,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.addnavigation.R
+import com.example.addnavigation.data.DataSource
+import com.example.addnavigation.model.MenuItem
 
 
 @Composable
@@ -30,7 +32,7 @@ fun AccompanimentMenuScreen(
     options: List<AccompanimentItem>,
     onCancelButtonClicked: () -> Unit,
     onNextButtonClicked: () -> Unit,
-    onSelectionChanged: (AccompanimentItem) -> Unit,
+    onSelectionChanged: (MenuItem.AccompanimentItem) -> Unit,
     modifier: Modifier = Modifier
 ) {
     BaseMenuScreen(
