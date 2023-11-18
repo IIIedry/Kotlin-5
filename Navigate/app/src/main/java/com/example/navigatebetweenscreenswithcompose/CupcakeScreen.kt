@@ -28,15 +28,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.navigatebetweenscreenswithcompose.R
-import com.example.cupcake.R
-import com.example.navigatebetweenscreenswithcompose.data.DataSource
 import com.example.navigatebetweenscreenswithcompose.data.OrderUiState
+import com.example.navigatebetweenscreenswithcompose.data.DataSource
 import com.example.navigatebetweenscreenswithcompose.ui.OrderSummaryScreen
 import com.example.navigatebetweenscreenswithcompose.ui.OrderViewModel
 import com.example.navigatebetweenscreenswithcompose.ui.SelectOptionScreen
 import com.example.navigatebetweenscreenswithcompose.ui.StartOrderScreen
-import javax.sql.DataSource
 
 
 enum class CupcakeScreen(@StringRes val title: Int) {
@@ -46,6 +43,9 @@ enum class CupcakeScreen(@StringRes val title: Int) {
     Summary(title = R.string.order_summary)
 }
 
+/**
+ * Composable that displays the topBar and displays back button if back navigation is possible.
+ */
 @Composable
 fun CupcakeAppBar(
     currentScreen: CupcakeScreen,
@@ -153,8 +153,6 @@ fun CupcakeApp(
         }
     }
 }
-
-
 private fun cancelOrderAndNavigateToStart(
     viewModel: OrderViewModel,
     navController: NavHostController
@@ -164,7 +162,6 @@ private fun cancelOrderAndNavigateToStart(
 }
 
 private fun shareOrder(context: Context, subject: String, summary: String) {
-    // Create an ACTION_SEND implicit intent with order details in the intent extras
     val intent = Intent(Intent.ACTION_SEND).apply {
         type = "text/plain"
         putExtra(Intent.EXTRA_SUBJECT, subject)
