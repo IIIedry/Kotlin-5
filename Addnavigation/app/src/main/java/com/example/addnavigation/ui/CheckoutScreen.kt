@@ -20,6 +20,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.addnavigation.R
+import com.example.addnavigation.data.DataSource
 import com.example.addnavigation.model.OrderUiState
 
 
@@ -82,4 +83,50 @@ fun CheckoutScreen(
             }
         }
     }
+}
+
+@Composable
+fun ItemSummary(
+    item: MenuItem?,
+    modifier: Modifier = Modifier
+) {
+    Row(
+        modifier = modifier,
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        Text(item?.name ?: "")
+        Text(item?.getFormattedPrice() ?: "")
+    }
+}
+
+@Composable
+fun OrderSubCost(
+    @StringRes resourceId: Int,
+    price: String,
+    modifier: Modifier = Modifier
+) {
+    Text(
+        text = stringResource(resourceId, price),
+        modifier = modifier
+    )
+}
+
+@Preview
+@Composable
+fun CheckoutScreenPreview() {
+    CheckoutScreen(
+        orderUiState = OrderUiState(
+            entree = DataSource.entreeMenuItems[0],
+            sideDish = DataSource.sideDishMenuItems[0],
+            accompaniment = DataSource.accompanimentMenuItems[0],
+            itemTotalPrice = 15.00,
+            orderTax = 1.00,
+            orderTotalPrice = 16.00
+        ),
+        onNextButtonClicked = {},
+        onCancelButtonClicked = {},
+        modifier = Modifier
+            .padding(dimensionResource(R.dimen.padding_medium))
+            .verticalScroll(rememberScrollState())
+    )
 }
