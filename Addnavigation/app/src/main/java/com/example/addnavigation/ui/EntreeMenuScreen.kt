@@ -1,4 +1,4 @@
-package com.example.addnavigation.ui.theme
+package com.example.addnavigation.ui
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -10,7 +10,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.addnavigation.R
 import com.example.addnavigation.data.DataSource
 import com.example.addnavigation.model.MenuItem
-import com.example.addnavigation.ui.BaseMenuScreen
 
 @Composable
 fun EntreeMenuScreen(
