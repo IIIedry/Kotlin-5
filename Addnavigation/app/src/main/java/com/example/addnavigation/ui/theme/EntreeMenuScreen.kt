@@ -1,14 +1,16 @@
 package com.example.addnavigation.ui.theme
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import com.example.addnavigation.model.MenuItem
 import com.example.addnavigation.ui.BaseMenuScreen
 
 @Composable
 fun EntreeMenuScreen(
-    options: List<EntreeItem>,
+    options: List<MenuItem.EntreeItem>,
     onCancelButtonClicked: () -> Unit,
     onNextButtonClicked: () -> Unit,
-    onSelectionChanged: (EntreeItem) -> Unit,
+    onSelectionChanged: (MenuItem.EntreeItem) -> Unit,
     modifier: Modifier = Modifier
 ) {
     BaseMenuScreen(
