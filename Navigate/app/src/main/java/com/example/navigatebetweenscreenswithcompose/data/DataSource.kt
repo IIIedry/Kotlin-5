@@ -1,6 +1,7 @@
 package com.example.navigatebetweenscreenswithcompose.data
 
-import com.example.cupcake.R
+import com.example.navigatebetweenscreenswithcompose.R
+
 
 object DataSource {
     val flavors = listOf(

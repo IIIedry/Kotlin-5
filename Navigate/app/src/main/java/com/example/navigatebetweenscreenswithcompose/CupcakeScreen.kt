@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -28,7 +29,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.navigatebetweenscreenswithcompose.data.OrderUiState
 import com.example.navigatebetweenscreenswithcompose.data.DataSource
 import com.example.navigatebetweenscreenswithcompose.ui.OrderSummaryScreen
 import com.example.navigatebetweenscreenswithcompose.ui.OrderViewModel
@@ -43,9 +43,7 @@ enum class CupcakeScreen(@StringRes val title: Int) {
     Summary(title = R.string.order_summary)
 }
 
-/**
- * Composable that displays the topBar and displays back button if back navigation is possible.
- */
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CupcakeAppBar(
     currentScreen: CupcakeScreen,
@@ -72,6 +70,7 @@ fun CupcakeAppBar(
     )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CupcakeApp(
     viewModel: OrderViewModel = viewModel(),
@@ -120,7 +119,9 @@ fun CupcakeApp(
                     onCancelButtonClicked = {
                         cancelOrderAndNavigateToStart(viewModel, navController)
                     },
-                    options = DataSource.flavors.map { id -> context.resources.getString(id) },
+                    options = DataSource.flavors.map { id ->
+                        context.resources.getString(id)
+                    },
                     onSelectionChanged = { viewModel.setFlavor(it) },
                     modifier = Modifier.fillMaxHeight()
                 )

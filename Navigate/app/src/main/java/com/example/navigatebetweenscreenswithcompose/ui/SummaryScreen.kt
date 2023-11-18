@@ -35,9 +35,9 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.cupcake.R
+import com.example.cupcake.ui.components.FormattedPriceLabel
+import com.example.navigatebetweenscreenswithcompose.R
 import com.example.navigatebetweenscreenswithcompose.data.OrderUiState
-import com.example.navigatebetweenscreenswithcompose.ui.components.FormattedPriceLabel
 
 @Composable
 fun OrderSummaryScreen(

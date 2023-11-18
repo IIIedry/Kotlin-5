@@ -39,7 +39,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.cupcake.R
+import com.example.navigatebetweenscreenswithcompose.R
 import com.example.navigatebetweenscreenswithcompose.data.DataSource
 
 
@@ -90,10 +90,6 @@ fun StartOrderScreen(
     }
 }
 
-/**
- * Customizable button composable that displays the [labelResourceId]
- * and triggers [onClick] lambda when this composable is clicked
- */
 @Composable
 fun SelectQuantityButton(
     @StringRes labelResourceId: Int,
