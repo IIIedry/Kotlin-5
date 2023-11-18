@@ -22,9 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import com.example.addnavigation.R
-import com.example.lunchtray.R
-import com.example.lunchtray.model.MenuItem
-
+import com.example.addnavigation.model.MenuItem
 @Composable
 fun BaseMenuScreen(
     options: List<MenuItem>,
@@ -66,5 +64,68 @@ fun BaseMenuScreen(
             },
             modifier = Modifier.fillMaxWidth().padding(dimensionResource(R.dimen.padding_medium))
         )
+    }
+}
+
+@Composable
+fun MenuItemRow(
+    item: MenuItem,
+    selectedItemName: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Row(
+        modifier = modifier,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        RadioButton(
+            selected = selectedItemName == item.name,
+            onClick = onClick
+        )
+        Column(
+            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_small))
+        ) {
+            Text(
+                text = item.name,
+                style = MaterialTheme.typography.headlineSmall
+            )
+            Text(
+                text = item.description,
+                style = MaterialTheme.typography.bodyLarge
+            )
+            Text(
+                text = item.getFormattedPrice(),
+                style = MaterialTheme.typography.bodyMedium
+            )
+            Divider(
+                thickness = dimensionResource(R.dimen.thickness_divider),
+                modifier = Modifier.padding(bottom = dimensionResource(R.dimen.padding_medium))
+            )
+        }
+    }
+}
+
+@Composable
+fun MenuScreenButtonGroup(
+    selectedItemName: String,
+    onCancelButtonClicked: () -> Unit,
+    onNextButtonClicked: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Row(
+        modifier = modifier,
+        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_medium))
+    ){
+        OutlinedButton(modifier = Modifier.weight(1f), onClick = onCancelButtonClicked) {
+            Text(stringResource(R.string.cancel).uppercase())
+        }
+        Button(
+            modifier = Modifier.weight(1f),
+            // the button is enabled when the user makes a selection
+            enabled = selectedItemName.isNotEmpty(),
+            onClick = onNextButtonClicked
+        ) {
+            Text(stringResource(R.string.next).uppercase())
+        }
     }
 }
