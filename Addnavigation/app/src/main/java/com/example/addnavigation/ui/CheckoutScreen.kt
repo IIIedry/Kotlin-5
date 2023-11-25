@@ -21,6 +21,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.addnavigation.R
 import com.example.addnavigation.data.DataSource
+import com.example.addnavigation.model.MenuItem
 import com.example.addnavigation.model.OrderUiState
 
 
