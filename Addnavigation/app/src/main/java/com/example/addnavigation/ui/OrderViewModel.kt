@@ -4,17 +4,35 @@ import androidx.lifecycle.ViewModel
 import com.example.addnavigation.model.MenuItem
 import com.example.addnavigation.model.OrderUiState
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import java.text.NumberFormat
 
 class OrderViewModel : ViewModel() {
 
     private val taxRate = 0.08
 
     private val _uiState = MutableStateFlow(OrderUiState())
+    val uiState: StateFlow<OrderUiState> = _uiState.asStateFlow()
 
     fun updateEntree(entree: MenuItem.EntreeItem) {
         val previousEntree = _uiState.value.entree
         updateItem(entree, previousEntree)
+    }
+
+    fun updateSideDish(sideDish: MenuItem.SideDishItem) {
+        val previousSideDish = _uiState.value.sideDish
+        updateItem(sideDish, previousSideDish)
+    }
+
+    fun updateAccompaniment(accompaniment: MenuItem.AccompanimentItem) {
+        val previousAccompaniment = _uiState.value.accompaniment
+        updateItem(accompaniment, previousAccompaniment)
+    }
+
+    fun resetOrder() {
+        _uiState.value = OrderUiState()
     }
 
     private fun updateItem(newItem: MenuItem, previousItem: MenuItem?){
@@ -35,5 +53,8 @@ class OrderViewModel : ViewModel() {
             )
         }
     }
+}
 
+fun Double.formatPrice(): String {
+    return NumberFormat.getCurrencyInstance().format(this)
 }
